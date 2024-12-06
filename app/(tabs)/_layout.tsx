@@ -7,7 +7,7 @@ export default function TabLayout() {
     //and hide the header in the tab layout
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "blue",
+        tabBarActiveTintColor: "navy",
         headerShown: false,
       }}
     >

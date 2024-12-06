@@ -21,6 +21,7 @@ export const BottomDrawer = ({ onClose }: { onClose: () => void }) => {
         snapPoints={["95%"]}
         enablePanDownToClose={true}
         onClose={onClose}
+        handleIndicatorStyle={{ height: 0 }}
       >
         <BottomSheetView style={styles.contentContainer}>
           <Text>Awesome 🎉</Text>
