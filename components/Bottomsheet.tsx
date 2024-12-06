@@ -1,23 +1,11 @@
-import React, { useCallback, useEffect, useRef } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useCallback, useRef } from "react";
+import { Text, StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 
-interface BottomDrawerProps {
-  isVisible: boolean;
-}
-
-export const BottomDrawer = ({ isVisible }: BottomDrawerProps) => {
+export const BottomDrawer = ({ onClose }: { onClose: () => void }) => {
   // ref
   const bottomSheetRef = useRef<BottomSheet>(null);
-
-  useEffect(() => {
-    if (isVisible) {
-      bottomSheetRef.current?.expand();
-    } else {
-      bottomSheetRef.current?.close();
-    }
-  }, [isVisible]);
 
   // callbacks
   const handleSheetChanges = useCallback((index: number) => {
@@ -27,7 +15,13 @@ export const BottomDrawer = ({ isVisible }: BottomDrawerProps) => {
   // renders
   return (
     <GestureHandlerRootView style={styles.container}>
-      <BottomSheet ref={bottomSheetRef} onChange={handleSheetChanges}>
+      <BottomSheet
+        ref={bottomSheetRef}
+        onChange={handleSheetChanges}
+        snapPoints={["95%"]}
+        enablePanDownToClose={true}
+        onClose={onClose}
+      >
         <BottomSheetView style={styles.contentContainer}>
           <Text>Awesome 🎉</Text>
         </BottomSheetView>
@@ -43,7 +37,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    padding: 36,
+    padding: 24,
     alignItems: "center",
   },
 });

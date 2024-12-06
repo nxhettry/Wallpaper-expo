@@ -6,7 +6,7 @@ export default function Explore() {
   const [pictureOpen, setPictureOpen] = useState(false);
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Text>Explore</Text>
       <Button
         title="Open Bottom Sheet"
@@ -15,7 +15,7 @@ export default function Explore() {
         }}
       />
 
-      {pictureOpen && <BottomDrawer isVisible={pictureOpen} />}
+      {pictureOpen && <BottomDrawer onClose={() => setPictureOpen(false)} />}
     </View>
   );
 }
