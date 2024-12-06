@@ -1,6 +1,5 @@
 import React, { useCallback, useRef } from "react";
 import { Text, StyleSheet } from "react-native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 
 export const BottomDrawer = ({ onClose }: { onClose: () => void }) => {
@@ -14,20 +13,18 @@ export const BottomDrawer = ({ onClose }: { onClose: () => void }) => {
 
   // renders
   return (
-    <GestureHandlerRootView style={styles.container}>
-      <BottomSheet
-        ref={bottomSheetRef}
-        onChange={handleSheetChanges}
-        snapPoints={["95%"]}
-        enablePanDownToClose={true}
-        onClose={onClose}
-        handleIndicatorStyle={{ height: 0 }}
-      >
-        <BottomSheetView style={styles.contentContainer}>
-          <Text>Awesome 🎉</Text>
-        </BottomSheetView>
-      </BottomSheet>
-    </GestureHandlerRootView>
+    <BottomSheet
+      ref={bottomSheetRef}
+      onChange={handleSheetChanges}
+      snapPoints={["95%"]}
+      enablePanDownToClose={true}
+      onClose={onClose}
+      handleIndicatorStyle={{ height: 0 }}
+    >
+      <BottomSheetView style={styles.contentContainer}>
+        <Text>Awesome 🎉</Text>
+      </BottomSheetView>
+    </BottomSheet>
   );
 };
 

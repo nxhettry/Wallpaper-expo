@@ -1,7 +1,8 @@
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { useState } from "react";
-import { Button, Image, Text, View, StyleSheet } from "react-native";
-import { useWallpaper, Wallpaper } from "@/hooks/useWallpaper";
+import { Image, View, StyleSheet } from "react-native";
+import { useWallpaper } from "@/hooks/useWallpaper";
+import { FlatList } from "react-native-gesture-handler";
 import ImageCard from "@/components/ImageCard";
 
 const wallpapers = useWallpaper();
@@ -27,14 +28,18 @@ export default function Explore() {
       >
         <View style={styles.container}>
           <View style={styles.imageContainer}>
-            {wallpapers.map((w: Wallpaper) => (
-              <ImageCard wallpaper={w} />
-            ))}
+            <FlatList
+              data={wallpapers}
+              renderItem={({ item }) => <ImageCard wallpaper={item} />}
+              keyExtractor={(item) => item.name}
+            />
           </View>
           <View style={styles.imageContainer}>
-            {wallpapers.map((w: Wallpaper) => (
-              <ImageCard wallpaper={w} />
-            ))}
+            <FlatList
+              data={wallpapers}
+              renderItem={({ item }) => <ImageCard wallpaper={item} />}
+              keyExtractor={(item) => item.name}
+            />
           </View>
         </View>
       </ParallaxScrollView>
