@@ -13,24 +13,25 @@ export default function TabLayout() {
     >
       {/* Define each button and screen as this code block, also explore different properties from the docs */}
       <Tabs.Screen
-        name="index" // Here the title must match with the name of the file in the (tab) folder
+        name="foryou"
         options={{
-          title: "For You", //Title of the tab that will be displayed
+          title: "For You",
           tabBarIcon: ({ color }) => {
-            return <FontAwesome name="home" size={24} color={color} />; //Icon of the tab that will be displayed
+            return <FontAwesome name="home" size={24} color={color} />;
           },
         }}
       />
 
       <Tabs.Screen
-        name="explore"
+        name="index" // Here the title must match with the name of the file in the (tab) folder
         options={{
-          title: "Explore",
+          title: "Explore", //Title of the tab that will be displayed
           tabBarIcon: ({ color }) => {
-            return <FontAwesome name="cog" size={24} color={color} />;
+            return <FontAwesome name="cog" size={24} color={color} />; //Icon of the tab that will be displayed
           },
         }}
       />
+
       <Tabs.Screen
         name="profile"
         options={{
