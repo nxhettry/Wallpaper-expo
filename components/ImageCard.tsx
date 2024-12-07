@@ -1,20 +1,22 @@
 import { Image, StyleSheet, View, Text } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Wallpaper } from "@/hooks/useWallpaper";
 import { TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function ImageCard({ wallpaper }: { wallpaper: Wallpaper }) {
+  const [isLiked, setIsLiked] = useState(false);
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.iconContainer}
-        onPress={() => console.log("Liked!")}
+        onPress={() => setIsLiked(!isLiked)}
       >
         <Ionicons
-          name="heart-outline"
+          name={isLiked ? "heart" : "heart-outline"}
           size={35}
-          color={"white"}
+          color={isLiked ? "red" : "white"}
           accessibilityLabel="Like"
         />
       </TouchableOpacity>
