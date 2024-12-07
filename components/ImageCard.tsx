@@ -1,14 +1,23 @@
 import { Image, StyleSheet, View, Text } from "react-native";
 import React from "react";
 import { Wallpaper } from "@/hooks/useWallpaper";
+import { TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function ImageCard({ wallpaper }: { wallpaper: Wallpaper }) {
   return (
     <View style={styles.container}>
-      <View style={styles.iconContainer}>
-        <Ionicons name="heart-outline" size={35} color={"white"} />
-      </View>
+      <TouchableOpacity
+        style={styles.iconContainer}
+        onPress={() => console.log("Liked!")}
+      >
+        <Ionicons
+          name="heart-outline"
+          size={35}
+          color={"white"}
+          accessibilityLabel="Like"
+        />
+      </TouchableOpacity>
       <Image style={styles.image} source={{ uri: wallpaper.url }} />
       <Text style={styles.imageLabel}>{wallpaper.name}</Text>
     </View>
