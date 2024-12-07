@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 export default function ImageCard({ wallpaper }: { wallpaper: Wallpaper }) {
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.iconContainer}>
         <Ionicons name="heart-outline" size={35} color={"white"} />
       </View>
@@ -16,6 +16,12 @@ export default function ImageCard({ wallpaper }: { wallpaper: Wallpaper }) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    margin: 8,
+    borderRadius: 20,
+    overflow: "hidden",
+    backgroundColor: "#000",
+  },
   image: {
     flex: 1,
     height: 250,
