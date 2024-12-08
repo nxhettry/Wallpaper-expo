@@ -29,14 +29,14 @@ export default function Explore() {
         <View style={styles.container}>
           <View style={styles.imageContainer}>
             <FlatList
-              data={wallpapers}
+              data={wallpapers.filter((_, index) => index % 2 === 0)}
               renderItem={({ item }) => <ImageCard wallpaper={item} />}
               keyExtractor={(item) => item.name}
             />
           </View>
           <View style={styles.imageContainer}>
             <FlatList
-              data={wallpapers}
+              data={wallpapers.filter((_, index) => index % 2 === 1)}
               renderItem={({ item }) => <ImageCard wallpaper={item} />}
               keyExtractor={(item) => item.name}
             />
@@ -52,10 +52,10 @@ const styles = StyleSheet.create({
     flex: 1,
     display: "flex",
     flexDirection: "row",
-    gap: 20,
+    gap: 10,
   },
   imageContainer: {
     flex: 1,
-    gap: 20,
+    gap: 10,
   },
 });
