@@ -1,28 +1,36 @@
-import { Image, StyleSheet, View, Text } from "react-native";
+import { Image, StyleSheet, View, Text, Pressable } from "react-native";
 import React, { useState } from "react";
 import { Wallpaper } from "@/hooks/useWallpaper";
 import { TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-export default function ImageCard({ wallpaper }: { wallpaper: Wallpaper }) {
+export default function ImageCard({
+  wallpaper,
+  onPress,
+}: {
+  wallpaper: Wallpaper;
+  onPress: () => void;
+}) {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.iconContainer}
-        onPress={() => setIsLiked(!isLiked)}
-      >
-        <Ionicons
-          name={isLiked ? "heart" : "heart-outline"}
-          size={35}
-          color={isLiked ? "red" : "white"}
-          accessibilityLabel="Like"
-        />
-      </TouchableOpacity>
-      <Image style={styles.image} source={{ uri: wallpaper.url }} />
-      <Text style={styles.imageLabel}>{wallpaper.name}</Text>
-    </View>
+    <Pressable onPress={onPress}>
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.iconContainer}
+          onPress={() => setIsLiked(!isLiked)}
+        >
+          <Ionicons
+            name={isLiked ? "heart" : "heart-outline"}
+            size={35}
+            color={isLiked ? "red" : "white"}
+            accessibilityLabel="Like"
+          />
+        </TouchableOpacity>
+        <Image style={styles.image} source={{ uri: wallpaper.url }} />
+        <Text style={styles.imageLabel}>{wallpaper.name}</Text>
+      </View>
+    </Pressable>
   );
 }
 

@@ -1,14 +1,17 @@
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { useState } from "react";
 import { Image, View, StyleSheet } from "react-native";
-import { useWallpaper } from "@/hooks/useWallpaper";
+import { useWallpaper, Wallpaper } from "@/hooks/useWallpaper";
 import { FlatList } from "react-native-gesture-handler";
 import ImageCard from "@/components/ImageCard";
+import { BottomDrawer } from "@/components/Bottomsheet";
 
 const wallpapers = useWallpaper();
 
 export default function Explore() {
-  const [pictureOpen, setPictureOpen] = useState(false);
+  const [selectedWallpaper, setSelectedWallpaper] = useState<Wallpaper | null>(
+    null
+  );
 
   return (
     <View style={{ flex: 1 }}>
@@ -30,19 +33,41 @@ export default function Explore() {
           <View style={styles.imageContainer}>
             <FlatList
               data={wallpapers.filter((_, index) => index % 2 === 0)}
-              renderItem={({ item }) => <ImageCard wallpaper={item} />}
+              renderItem={({ item }) => (
+                <ImageCard
+                  onPress={() => {
+                    setSelectedWallpaper(item);
+                  }}
+                  wallpaper={item}
+                />
+              )}
               keyExtractor={(item) => item.name}
             />
           </View>
           <View style={styles.imageContainer}>
             <FlatList
               data={wallpapers.filter((_, index) => index % 2 === 1)}
-              renderItem={({ item }) => <ImageCard wallpaper={item} />}
+              renderItem={({ item }) => (
+                <ImageCard
+                  onPress={() => {
+                    setSelectedWallpaper(item);
+                  }}
+                  wallpaper={item}
+                />
+              )}
               keyExtractor={(item) => item.name}
             />
           </View>
         </View>
       </ParallaxScrollView>
+
+      {/* Display the wallpaper if clicked */}
+      {selectedWallpaper && (
+        <BottomDrawer
+          onClose={() => setSelectedWallpaper(null)}
+          wallpaper={selectedWallpaper}
+        />
+      )}
     </View>
   );
 }
