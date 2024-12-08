@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from "react";
-import { Text, StyleSheet, Image } from "react-native";
+import { Text, StyleSheet, Image, View, Dimensions } from "react-native";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { Wallpaper } from "@/hooks/useWallpaper";
 
@@ -19,16 +19,18 @@ export const BottomDrawer = ({ onClose, wallpaper }: drawerProps) => {
       snapPoints={["90%"]}
       enablePanDownToClose={true}
       onClose={onClose}
-      handleIndicatorStyle={{ height: 0 }}
+      handleIndicatorStyle={{ height: 4 }}
     >
       <BottomSheetView style={styles.contentContainer}>
-        <Image
-          source={{ uri: wallpaper.url }}
-          style={styles.image}
-          resizeMode="cover"
-          alt={`photo of ${wallpaper.name}`}
-          onError={() => console.log("Failed to load image")}
-        />
+        <View style={styles.imageContainer}>
+          <Image
+            source={{ uri: wallpaper.url }}
+            style={styles.image}
+            resizeMode="cover"
+            alt={`photo of ${wallpaper.name}`}
+            onError={() => console.log("Failed to load image")}
+          />
+        </View>
       </BottomSheetView>
     </BottomSheet>
   );
@@ -44,7 +46,9 @@ const styles = StyleSheet.create({
     padding: 24,
     alignItems: "center",
   },
-  image: {
-    flex: 1,
+  imageContainer: {
+    height: "100%",
+    width: "100%",
   },
+  image: { height: "100%", width: "100%" },
 });

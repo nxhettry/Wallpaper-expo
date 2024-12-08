@@ -14,7 +14,7 @@ export default function Explore() {
   );
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ height: "100%" }}>
       <ParallaxScrollView
         headerImage={
           <Image
