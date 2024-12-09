@@ -1,36 +1,37 @@
 import React, { useCallback, useRef } from "react";
-import { Text, StyleSheet, Image, View, Dimensions } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { Wallpaper } from "@/hooks/useWallpaper";
 
 interface drawerProps {
-  onClose: () => void;
-  wallpaper: Wallpaper;
+  onClose: () => void,
+  wallpaper: {
+    "name": string,
+    "url": string
+  }
 }
 
 export const BottomDrawer = ({ onClose, wallpaper }: drawerProps) => {
   // ref
   const bottomSheetRef = useRef<BottomSheet>(null);
 
+  // callbacks
+  const handleSheetChanges = useCallback((index: number) => {
+    console.log("handleSheetChanges", index);
+  }, []);
+
   // renders
   return (
     <BottomSheet
       ref={bottomSheetRef}
-      snapPoints={["90%"]}
+      onChange={handleSheetChanges}
+      snapPoints={["95%"]}
       enablePanDownToClose={true}
       onClose={onClose}
-      handleIndicatorStyle={{ height: 4 }}
+      handleIndicatorStyle={{ height: 0 }}
     >
       <BottomSheetView style={styles.contentContainer}>
-        <View style={styles.imageContainer}>
-          <Image
-            source={{ uri: wallpaper.url }}
-            style={styles.image}
-            resizeMode="cover"
-            alt={`photo of ${wallpaper.name}`}
-            onError={() => console.log("Failed to load image")}
-          />
-        </View>
+        <Text>Awesome 🎉</Text>
       </BottomSheetView>
     </BottomSheet>
   );
@@ -46,9 +47,4 @@ const styles = StyleSheet.create({
     padding: 24,
     alignItems: "center",
   },
-  imageContainer: {
-    height: "100%",
-    width: "100%",
-  },
-  image: { height: "100%", width: "100%" },
 });
