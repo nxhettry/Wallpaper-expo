@@ -14,7 +14,7 @@ export default function ImageCard({
   const [isLiked, setIsLiked] = useState(false);
 
   return (
-    <Pressable onPress={onPress}>
+    <Pressable style={{ flex: 1 }} onPress={onPress}>
       <View style={styles.container}>
         <TouchableOpacity
           style={styles.iconContainer}

@@ -49,6 +49,7 @@ export const BottomDrawer = ({ onClose, wallpaper }: drawerProps) => {
 
         <Text style={[styles.title, textStyle]}>{wallpaper.name}</Text>
 
+        {/* Download button */}
         <Pressable onPress={handleDownload} style={[buttonStyle]}>
           <Text style={[textStyle, { fontSize: 20, fontWeight: "bold" }]}>
             Download
@@ -57,7 +58,7 @@ export const BottomDrawer = ({ onClose, wallpaper }: drawerProps) => {
 
         {/* Icons */}
         <View style={styles.toolbar}>
-          <Pressable style={styles.iconContainer}>
+          <Pressable onPress={onClose} style={styles.iconContainer}>
             <Ionicons
               style={styles.icon}
               size={35}

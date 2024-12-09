@@ -32,21 +32,8 @@ export default function Explore() {
         <View style={styles.container}>
           <View style={styles.imageContainer}>
             <FlatList
-              data={wallpapers.filter((_, index) => index % 2 === 0)}
-              renderItem={({ item }) => (
-                <ImageCard
-                  onPress={() => {
-                    setSelectedWallpaper(item);
-                  }}
-                  wallpaper={item}
-                />
-              )}
-              keyExtractor={(item) => item.name}
-            />
-          </View>
-          <View style={styles.imageContainer}>
-            <FlatList
-              data={wallpapers.filter((_, index) => index % 2 === 1)}
+              data={wallpapers}
+              numColumns={2}
               renderItem={({ item }) => (
                 <ImageCard
                   onPress={() => {
