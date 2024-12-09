@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import SplitView from "@/components/Splitview";
-import { useWallpaper } from "@/hooks/useWallpaper";
 import { ThemedSafeArea } from "@/components/ThemedSafeArea";
+import { useLibraryWallpaper } from "@/hooks/useWallpaper";
 
-const wallpapers = useWallpaper();
+const wallpapers = useLibraryWallpaper();
 
 export default function Library() {
   return (
