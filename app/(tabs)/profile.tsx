@@ -1,13 +1,14 @@
+import { ThemedSafeArea } from "@/components/ThemedSafeArea";
 import { Link } from "expo-router";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
 
 export default function Profile() {
     return (
-        <View >
+        <ThemedSafeArea >
             <Text>Profileage</Text>
             <Link href="/AccountInfo">
                 Account info
             </Link>
-        </View>
+        </ThemedSafeArea>
     );
 }

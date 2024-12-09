@@ -3,6 +3,12 @@ export interface Wallpaper {
   name: string;
 }
 
+interface FullWallpaper extends Wallpaper {
+  library: boolean,
+  suggested: boolean,
+  liked: boolean,
+}
+
 export function useWallpaper() {
   return [
     {

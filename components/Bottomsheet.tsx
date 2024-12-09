@@ -33,7 +33,7 @@ export const BottomDrawer = ({ onClose, wallpaper }: drawerProps) => {
   return (
     <BottomSheet
       ref={bottomSheetRef}
-      snapPoints={["96%"]}
+      snapPoints={["100%"]}
       enablePanDownToClose={true}
       onClose={onClose}
       handleStyle={{ display: "none" }}
